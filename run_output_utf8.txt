@@ -1,0 +1,23 @@
+﻿--- E2EE Flight Booking Demo Client ---
+
+[1] Fetching all flights...
+GET http://localhost:8080/api/v1/flights - Status: 200
+Raw Server Response: {"payload":"kmGqSQzz7JadebZoWrBq8wVrkp0FPLwH4sbaaYkb8HkNlu0WQvo93WicQ4LANwys2ZSI6YmmQuuKkbxu+hsZMOO9Uu6UtkwZtaw6oBJNDINlZNQQnQMUzRA73qDFwbFiadEP0K4LrJPoiyS2eVXN+B7ZbXnzn5b8od+ukmRZFgXbro2qEJ4VKazf9gY/vBqTvkyDo5YBW6zGyq3J9u+Y3lzCkQgMEDim9V0z/wHL5IwkyeZvlu9HuP7vyzx2rhbg5X31u4DaXnH0w45jKOXZgHzdg7tvbgw9xoDpUlUHw+00WCXVnpyWe0UvGL85pSkNSuc7u8gJnG6VkuC41NrZWRIYVseCW9YGkfTvnYGNJStxvdPJc62pq13exg9oCDxSmEDN2pa5sCxraSkEPb+qJloEL5hWp+EH5nuI8YXhHdpiJ27rGoKGMi4oKxbC"}
+Encrypted Response: kmGqSQzz7JadebZoWrBq8wVrkp0FPLwH4sbaaYkb8HkNlu0WQvo93WicQ4LANwys2ZSI6YmmQuuKkbxu+hsZMOO9Uu6UtkwZtaw6oBJNDINlZNQQnQMUzRA73qDFwbFiadEP0K4LrJPoiyS2eVXN+B7ZbXnzn5b8od+ukmRZFgXbro2qEJ4VKazf9gY/vBqTvkyDo5YBW6zGyq3J9u+Y3lzCkQgMEDim9V0z/wHL5IwkyeZvlu9HuP7vyzx2rhbg5X31u4DaXnH0w45jKOXZgHzdg7tvbgw9xoDpUlUHw+00WCXVnpyWe0UvGL85pSkNSuc7u8gJnG6VkuC41NrZWRIYVseCW9YGkfTvnYGNJStxvdPJc62pq13exg9oCDxSmEDN2pa5sCxraSkEPb+qJloEL5hWp+EH5nuI8YXhHdpiJ27rGoKGMi4oKxbC
+Decrypted Flights: 
+[{"id":1,"flightNumber":"FL-101","departure":"NYC","destination":"LAX","departureTime":[2026,3,18,14,50,35,302038000],"availableSeats":50,"price":350.0},{"id":2,"flightNumber":"FL-202","departure":"SFO","destination":"CHI","departureTime":[2026,3,19,14,50,35,431318000],"availableSeats":10,"price":200.0}]
+
+[2] Booking a flight (Flight ID 1)...
+Plain Request: {"flightId":1, "passengerName":"John Doe"}
+Encrypted Request: pIhKCOOJD9uNdP3h6Ew47iHO/WlzixdtKIK3jrVhtq8EcdxVl6rfB7WbYtMyUGgJgGdTJjcWKrqegJFJCyRMTEPqIXdYgQ==
+POST http://localhost:8080/api/v1/book - Status: 200
+Raw Server Response: {"payload":"QQTwW5zHjUiGkKnr2tTkmyrDVkf/wK04dJ+S6UTFSoCwqOC/+bL8YrFV17gjR2R4wgwa4mKoIbnStSSEBeMkVkN0z1b16X+nfICtrepTxIQo9alsaXfuDC9gvbvNTK5GdKOQ5Y8LeW/QWEgGKMCe"}
+Decrypted Response: 
+{"id":2,"pnr":"773ECA32","flightId":1,"passengerName":"John Doe","status":"BOOKED"}
+Extracted PNR: 773ECA32
+
+[3] Cancelling flight with PNR: 773ECA32
+POST http://localhost:8080/api/v1/cancel - Status: 200
+Raw Server Response: {"payload":"PCVdpxIOicJxkiiv7I3VxUafIcwZOtD2t2xSuYnON0YUjmuvgn04gy94axrHuxTmOp4udCPy3fEr0TgYc0+MoFArG7CMyUDUkjAXdKOkKEZHHqJR0w=="}
+Decrypted Response: 
+{"id":2,"ticketId":2,"amount":350.0,"status":"COMPLETED"}

@@ -1,0 +1,31 @@
+﻿--- E2EE Flight Booking Demo Client ---
+
+[1] Fetching all flights...
+Raw Server Response: 
+Encrypted Response: 
+java : Failed to parse json: 
+At line:1 char:1
++ java DemoClient > 
+demo_out2.txt 2>&1; 
+Get-Content demo_out2.txt | 
+Set ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Failed   
+  to parse json: :String)    
+ [], RemoteException
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+Exception in thread "main" ja
+va.lang.ArrayIndexOutOfBounds
+Exception: arraycopy: last 
+source index 12 out of 
+bounds for byte[0]
+	at java.base/java.lang.Syste
+m.arraycopy(Native Method)
+	at DemoClient.decrypt(DemoCl
+ient.java:107)
+	at DemoClient.main(DemoClien
+t.java:25)
